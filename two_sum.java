@@ -1,29 +1,28 @@
 import java.util.*;
 public class two_sum{
-    public static int[]  calculate(int arr[] , int target){
-        int new_arr[] = {-1,-1};
-         for(int i = 0 ;i<arr.length-1 ; i++){
-            for(int j=i+1;j<arr.length;j++){
-                if(arr[i] + arr[j] == target){
-                    new_arr[0] = i+1 ;
-                    new_arr[1] = j+1;
-                    return new_arr;
-                }
-            }
-         }
-
-         return new_arr;
-    }
-
     public static void main(String args[]){
-        int arr[] = {  2, 5,8,11 , 15 , 19};
+        int arr[] = {2,7,11,15};
+        int target = 9;
 
-        int result[] = calculate(arr , 26 );
+        HashMap<Integer , Integer> map = new HashMap<>();
 
-        if(result[0] == -1 || result[1] == -1){
-            System.out.print("result not found");
+        int result[] = {-1 , -1};
+
+        for(int i=0;i<arr.length;i++){
+            int needed = target - arr[i];
+
+            if(map.containsKey(needed)){
+                result[0] = map.get(needed);
+                result[1] = i;
+            }
+
+            map.put(arr[i] , i);
+        }
+
+        if(result[0] == -1){
+            System.out.println("Result not found");
         }else{
-            System.out.print( result[0] + " "+ result[1]);
+            System.out.println(result[0] +" "+result[1]);
         }
     }
 }

@@ -1,39 +1,37 @@
 import java.util.*;
 public class valid_palindrom{
-    public static int palindrom(String s){
+    public static boolean result(String str){
+        StringBuilder str1 = new StringBuilder();
 
-        StringBuilder str = new StringBuilder();
-
-        for(int i=0;i<s.length();i++){
-            char ch = s.charAt(i);
+        for(int i=0;i<str.length();i++){
+            char ch = str.charAt(i);
 
             if(Character.isLetterOrDigit(ch)){
-                str.append(Character.toLowerCase(ch));
+                str1.append(Character.toLowerCase(ch));
             }
         }
+
         int i=0;
-        int j = str.length()-1;
+        int j=str1.length()-1;
 
         while(i < j){
-            if(str.charAt(i) != str.charAt(j)){
-                return 0;
+            if(str1.charAt(i) != str1.charAt(j)){
+                return false;
             }
 
-            i++ ;
+            i++;
             j--;
         }
 
-        return 1;
+        return true;
     }
     public static void main(String args[]){
-        String name = "madam";
+        String str = "madam";
 
-        int result = palindrom(name);
+        boolean temp = result(str);
 
-        if(result == 1){
-            System.out.print("String is plaindrom");
-        }else{
-            System.out.println("String is not a plaindrom");
-        }
+        System.out.println(temp);
+
+
     }
 }
